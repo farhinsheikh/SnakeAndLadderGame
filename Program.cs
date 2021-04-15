@@ -12,6 +12,8 @@ namespace SnakeAndLadderGame
         const int LADDER = 1;
         const int SNAKE = 2;
         int positionOfPlayer = 0;
+        const int WinPosition = 100;
+
 
         static void Main(string[] args)
         {
@@ -20,26 +22,32 @@ namespace SnakeAndLadderGame
         }
         public void getDieRoll()
         {
-
-            Random random = new Random();
-            int option = random.Next(0, 3);
-            int die = random.Next(1, 7);
             Console.WriteLine(" Player's start position is = " + StartPosition);
-            Console.WriteLine(" Die number is = " + die);
-
-            switch (option)
+            while (positionOfPlayer <= WinPosition)
             {
-                case NO_PLAY:
-                    Console.WriteLine("No Play");
-                    break;
-                case LADDER:
-                    positionOfPlayer += die;
-                    Console.WriteLine("You got Ladder = " + positionOfPlayer);
-                    break;
-                case SNAKE:
-                    positionOfPlayer -= die;
-                    Console.WriteLine("You got Snake = " + positionOfPlayer);
-                    break;
+                Random random = new Random();
+                int option = random.Next(0, 3);
+                int die = random.Next(1, 7);
+                Console.WriteLine(" Die number is = " + die);
+
+                switch (option)
+                {
+                    case NO_PLAY:
+                        Console.WriteLine("No Play");
+                        break;
+                    case LADDER:
+                        positionOfPlayer += die;
+                        Console.WriteLine("You got Ladder = " + positionOfPlayer);
+                        break;
+                    case SNAKE:
+                        positionOfPlayer -= die;
+                       if (positionOfPlayer < StartPosition)
+                       {
+                           positionOfPlayer = StartPosition;
+                       }
+                        Console.WriteLine("You got Snake = " + positionOfPlayer);
+                        break;
+                }
             }
          
         }
