@@ -13,6 +13,7 @@ namespace SnakeAndLadderGame
         const int SNAKE = 2;
         int positionOfPlayer = 0;
         const int WinPosition = 100;
+        int dieCount = 0;
 
 
         static void Main(string[] args)
@@ -29,6 +30,8 @@ namespace SnakeAndLadderGame
                 int option = random.Next(0, 3);
                 int die = random.Next(1, 7);
                 Console.WriteLine(" Die number is = " + die);
+                dieCount++;
+                Console.WriteLine("die count = " + dieCount);
 
                 switch (option)
                 {
@@ -54,7 +57,7 @@ namespace SnakeAndLadderGame
                         break;
                 }
             }
-         
+            Console.WriteLine("Total die rolls = " + dieCount);
         }
     }
 }
