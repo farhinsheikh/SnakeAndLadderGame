@@ -23,7 +23,7 @@ namespace SnakeAndLadderGame
         public void getDieRoll()
         {
             Console.WriteLine(" Player's start position is = " + StartPosition);
-            while (positionOfPlayer <= WinPosition)
+            while (positionOfPlayer < WinPosition)
             {
                 Random random = new Random();
                 int option = random.Next(0, 3);
@@ -37,7 +37,12 @@ namespace SnakeAndLadderGame
                         break;
                     case LADDER:
                         positionOfPlayer += die;
-                        Console.WriteLine("You got Ladder = " + positionOfPlayer);
+                        if (positionOfPlayer > WinPosition)
+                        {
+                            Console.WriteLine("Invalid position");
+                            positionOfPlayer -= die;
+                        }
+                            Console.WriteLine("You got Ladder = " + positionOfPlayer);
                         break;
                     case SNAKE:
                         positionOfPlayer -= die;
